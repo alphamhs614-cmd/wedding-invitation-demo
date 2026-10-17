@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Valentina &amp; Mateo – Digital Wedding Invitation (concept demo)</title>
+<meta name="description" content="Concept demo of an elegant single-page digital wedding invitation with RSVP, schedule, dress code and gallery. Fictional couple.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--iv:#faf6ef;--iv2:#f2ebdf;--ink:#3b3a36;--mut:#857f73;--gold:#b08d57;--gold2:#d4b98a;--sage:#8a9a7b;--line:#e4dccd}
+*{box-sizing:border-box;margin:0;padding:0}html{overflow-x:clip}html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto}
+body{font-family:Jost,system-ui,sans-serif;font-weight:300;background:var(--iv);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+a{color:inherit}button{font:inherit;cursor:pointer}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}.script{font-family:"Pinyon Script",cursive;font-weight:400}
+.wrap{width:min(1000px,90%);margin:auto}
+.flag{position:fixed;top:0;left:0;right:0;z-index:400;background:#3b3a36;color:#e9e2d4;font-size:.72rem;text-align:center;padding:.35rem 1rem;letter-spacing:.03em}
+.lang{position:fixed;top:40px;right:16px;z-index:350;display:flex;border:1px solid var(--gold2);border-radius:99px;overflow:hidden;background:#faf6efdd;backdrop-filter:blur(6px)}
+.lang button{border:0;background:none;padding:.35rem .75rem;font-size:.75rem;letter-spacing:.15em;color:var(--mut)}
+.lang button.on{background:var(--gold);color:#fff}
+/* envelope intro */
+#intro{position:fixed;inset:0;z-index:300;background:radial-gradient(circle at 50% 40%,#f6efe2,#e9dfcd);display:grid;place-items:center;transition:opacity 1s,visibility 1s}
+#intro.gone{opacity:0;visibility:hidden}
+.env{position:relative;width:min(420px,82vw);aspect-ratio:1.45;cursor:pointer;perspective:1200px}
+.env .bk{position:absolute;inset:0;background:#e8dcc6;border-radius:6px;box-shadow:0 30px 60px -20px #6b5a3a66}
+.env .card{position:absolute;left:6%;right:6%;top:8%;bottom:8%;background:var(--iv);border-radius:4px;display:grid;place-items:center;text-align:center;transition:transform 1.2s cubic-bezier(.6,0,.2,1) .5s;z-index:1}
+.env .card .script{font-size:2.4rem;color:var(--gold)}
+.env .front{position:absolute;inset:0;z-index:2;clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);background:linear-gradient(160deg,#efe5d2,#e2d4bb);border-radius:6px}
+.env .flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:3;clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(180deg,#e6d8bf,#d9c7a8);transform-origin:top;transition:transform .8s ease-in-out,z-index 0s .4s}
+.env .seal{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:4;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#c9a46a,#8f6a35);display:grid;place-items:center;color:#f7ecd8;font-family:"Pinyon Script";font-size:1.5rem;box-shadow:0 4px 12px #0003;transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg);z-index:0}.env.open .seal{opacity:0}.env.open .card{transform:translateY(-62%)}
+.tap{margin-top:2rem;text-align:center;font-size:.8rem;letter-spacing:.3em;color:var(--mut);text-transform:uppercase;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.4}}
+/* hero */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;padding:90px 0 60px;overflow:hidden}
+.hero .fl{position:absolute;width:min(360px,60vw);opacity:.9}
+.hero .fl.a{top:-30px;left:-60px}.hero .fl.b{bottom:-40px;right:-60px;transform:rotate(180deg)}
+.pre{font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;color:var(--mut)}
+.names{font-size:clamp(4rem,13vw,8.5rem);line-height:1;color:var(--gold);margin:.6rem 0}
+.names span{display:block;font-family:"Cormorant Garamond";font-size:.28em;color:var(--ink);font-style:italic;margin:.2em 0}
+.date{font-family:"Cormorant Garamond";font-size:clamp(1.3rem,3vw,1.8rem);letter-spacing:.25em;border-top:1px solid var(--gold2);border-bottom:1px solid var(--gold2);display:inline-block;padding:.4rem 1.6rem;margin-top:1rem}
+.place{margin-top:.8rem;color:var(--mut);letter-spacing:.12em;font-size:.9rem}
+.cd{display:flex;gap:clamp(.8rem,3vw,2rem);justify-content:center;margin-top:2.4rem}
+.cd div{min-width:70px}.cd b{font-family:"Cormorant Garamond";font-weight:500;font-size:clamp(2rem,5vw,2.8rem);display:block;line-height:1}
+.cd span{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mut)}
+section{padding:110px 0;position:relative}
+.orn{display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--gold);margin-bottom:1rem}
+.orn:before,.orn:after{content:"";height:1px;width:60px;background:var(--gold2)}
+h2{font-family:"Cormorant Garamond";font-weight:400;font-size:clamp(2.4rem,6vw,3.6rem);text-align:center;line-height:1.1}
+h2 i{color:var(--gold)}
+.sub{text-align:center;color:var(--mut);max-width:520px;margin:1rem auto 0}
+.rv{opacity:0;transform:translateY(30px)}
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;margin-top:3.5rem}
+.arch{aspect-ratio:3/4;border-radius:999px 999px 8px 8px;overflow:hidden;position:relative;background:linear-gradient(180deg,#e7dccb,#cfc2a8);border:8px solid #fff;box-shadow:0 30px 60px -30px #6b5a3a88}
+.arch svg{position:absolute;inset:0;width:100%;height:100%}
+.arch small{position:absolute;bottom:1rem;left:0;right:0;text-align:center;font-size:.7rem;letter-spacing:.2em;color:#6b5f4d;text-transform:uppercase}
+.tl{border-left:1px solid var(--gold2);padding-left:1.8rem}
+.tl div{position:relative;margin-bottom:1.8rem}
+.tl div:before{content:"";position:absolute;left:calc(-1.8rem - 5px);top:.55rem;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.tl b{font-family:"Cormorant Garamond";font-size:1.45rem;font-weight:500;display:block}
+.tl small{letter-spacing:.2em;color:var(--gold);font-size:.72rem;text-transform:uppercase}
+.tl p{color:var(--mut);font-size:.95rem}
+/* schedule */
+.sch{background:var(--iv2)}
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.ev{background:var(--iv);border:1px solid var(--line);padding:2.2rem 1.6rem;text-align:center;position:relative}
+.ev:before{content:"";position:absolute;inset:8px;border:1px solid var(--line);pointer-events:none}
+.ev svg{width:46px;height:46px;stroke:var(--gold);fill:none;stroke-width:1.2;margin-bottom:.8rem}
+.ev h3{font-family:"Cormorant Garamond";font-weight:500;font-size:1.7rem}
+.ev .t{font-family:"Cormorant Garamond";font-size:1.25rem;color:var(--gold);margin:.3rem 0}
+.ev p{color:var(--mut);font-size:.92rem}
+.ev a{display:inline-block;margin-top:1rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid var(--gold);text-decoration:none;color:var(--ink)}
+.cal{text-align:center;margin-top:2.4rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:var(--iv);border:0;padding:1rem 2rem;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;transition:background .3s}
+.btn:hover{background:var(--gold)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--ink)}.btn.o:hover{background:var(--ink);color:var(--iv)}
+/* dress */
+.dress{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:3rem}
+.dress h3{font-family:"Cormorant Garamond";font-size:2rem;font-weight:500}
+.sw{display:flex;gap:.8rem;margin-top:1.3rem}
+.sw i{width:46px;height:46px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line)}
+.dress .note{font-size:.88rem;color:var(--mut);margin-top:1rem}
+.attire{display:flex;justify-content:center;gap:2rem}
+.attire svg{width:120px;height:220px}
+/* gallery */
+.gal{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:2.5rem 5vw 1.2rem;scrollbar-width:thin;scrollbar-color:var(--gold2) transparent}
+.ph{flex:0 0 min(320px,72vw);aspect-ratio:4/5;scroll-snap-align:center;background:#fff;padding:12px 12px 46px;box-shadow:0 20px 40px -24px #6b5a3a88;position:relative;transition:transform .4s}
+.ph:nth-child(odd){transform:rotate(-1.5deg)}.ph:nth-child(even){transform:rotate(1.5deg)}
+.ph:hover{transform:rotate(0) scale(1.02)}
+.ph div{width:100%;height:100%}
+.ph span{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:"Pinyon Script";font-size:1.4rem;color:var(--gold)}
+.hint{text-align:center;font-size:.75rem;letter-spacing:.25em;color:var(--mut);text-transform:uppercase}
+/* rsvp */
+.rsvp{background:var(--ink);color:var(--iv)}
+.rsvp h2 i{color:var(--gold2)}.rsvp .sub{color:#bdb6a8}
+form{max-width:620px;margin:3rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+form .f{grid-column:1/-1}
+label{display:flex;flex-direction:column;gap:.4rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#cfc7b7}
+input,select,textarea{background:transparent;border:0;border-bottom:1px solid #6d6a62;color:var(--iv);padding:.7rem 0;font:inherit;font-size:1rem;letter-spacing:0;text-transform:none}
+select option{color:#000}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold2)}
+.att{display:flex;gap:.8rem}
+.att input{display:none}.att label{flex:1;flex-direction:row;justify-content:center;border:1px solid #6d6a62;padding:.9rem;cursor:pointer;font-size:.78rem;transition:.3s}
+.att input:checked+label{background:var(--gold);border-color:var(--gold);color:#fff}
+.rsvp .btn{background:var(--gold);justify-content:center}.rsvp .btn:hover{background:var(--gold2);color:var(--ink)}
+.thanks{display:none;text-align:center;grid-column:1/-1;padding:2rem;border:1px solid var(--gold)}
+.thanks .script{font-size:3rem;color:var(--gold2)}
+.dl{text-align:center;color:#8f897c;font-size:.8rem;margin-top:1.4rem}
+footer{text-align:center;padding:4rem 0 3rem}
+footer .script{font-size:3rem;color:var(--gold)}
+footer p{font-size:.8rem;letter-spacing:.2em;color:var(--mut);text-transform:uppercase}
+#petals{position:fixed;inset:0;pointer-events:none;z-index:5}
+.music{position:fixed;bottom:18px;right:18px;z-index:50;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold2);background:#faf6efee;color:var(--gold);font-size:1.1rem}
+@media(max-width:800px){.story,.dress{grid-template-columns:1fr;gap:2.4rem}.events{grid-template-columns:1fr}form{grid-template-columns:1fr}.arch{max-width:320px;margin:auto}section{padding:80px 0}}
+</style>
+</head>
+<body class="lock">
+<div class="flag">Concept demo by Mohammad · fictional couple, names, venue &amp; photos are placeholders</div>
+<div class="lang"><button class="on" data-l="en">EN</button><button data-l="es">ES</button></div>
+<div id="intro"><div><div class="env" id="env"><div class="bk"></div><div class="card"><div><div class="pre" style="font-size:.6rem" data-en="You are invited" data-es="Estás invitado">You are invited</div><div class="script">V &amp; M</div></div></div><div class="front"></div><div class="flap"></div><div class="seal">VM</div></div><div class="tap" data-en="Tap to open" data-es="Toca para abrir">Tap to open</div></div></div>
+<canvas id="petals"></canvas>
+
+<header class="hero" id="top">
+ <svg class="fl a" viewBox="0 0 300 300" fill="none" stroke="#b08d57" stroke-width="1.1"><path d="M10 40 C80 60 140 110 170 200"/><path d="M60 52 C50 20 80 5 95 30 C110 55 75 70 60 52Z" fill="#d4b98a33"/><path d="M110 85 C120 50 155 50 155 80 C155 110 115 110 110 85Z" fill="#8a9a7b33"/><path d="M140 140 C175 125 195 150 175 170 C155 190 130 165 140 140Z" fill="#d4b98a33"/><circle cx="30" cy="30" r="14" fill="#f2ebdf"/><circle cx="30" cy="30" r="6"/><path d="M85 70 C70 100 40 110 20 100"/><path d="M128 112 C150 115 165 100 168 90"/></svg>
+ <svg class="fl b" viewBox="0 0 300 300" fill="none" stroke="#b08d57" stroke-width="1.1"><path d="M10 40 C80 60 140 110 170 200"/><path d="M60 52 C50 20 80 5 95 30 C110 55 75 70 60 52Z" fill="#d4b98a33"/><path d="M110 85 C120 50 155 50 155 80 C155 110 115 110 110 85Z" fill="#8a9a7b33"/><path d="M140 140 C175 125 195 150 175 170 C155 190 130 165 140 140Z" fill="#d4b98a33"/><circle cx="30" cy="30" r="14" fill="#f2ebdf"/><circle cx="30" cy="30" r="6"/></svg>
+ <div>
+  <div class="pre hx" data-en="Together with their families" data-es="Junto a sus familias">Together with their families</div>
+  <h1 class="names script hx">Valentina<span>&amp;</span>Mateo</h1>
+  <div class="pre hx" data-en="request the pleasure of your company" data-es="tienen el honor de invitarle">request the pleasure of your company</div>
+  <div class="date hx">12 · 06 · 2027</div>
+  <div class="place hx">Hacienda Los Olivos · Cuenca, Ecuador (placeholder)</div>
+  <div class="cd hx" id="cd"><div><b id="dd">00</b><span data-en="Days" data-es="Días">Days</span></div><div><b id="hh">00</b><span data-en="Hours" data-es="Horas">Hours</span></div><div><b id="mm">00</b><span data-en="Min" data-es="Min">Min</span></div><div><b id="ss">00</b><span data-en="Sec" data-es="Seg">Sec</span></div></div>
+ </div>
+</header>
+
+<section><div class="wrap">
+ <div class="orn rv">✦</div><h2 class="rv" data-en="Our <i>story</i>" data-es="Nuestra <i>historia</i>">Our <i>story</i></h2>
+ <div class="story">
+  <div class="arch rv"><svg viewBox="0 0 300 400"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe3cf"/><stop offset="1" stop-color="#c9b48f"/></linearGradient></defs><rect width="300" height="400" fill="url(#g1)"/><circle cx="220" cy="110" r="40" fill="#fff" opacity=".5"/><path d="M0 300 Q80 250 150 290 T300 270 V400 H0Z" fill="#a9b39a" opacity=".7"/><g fill="#5c5446"><circle cx="128" cy="205" r="16"/><path d="M104 330 Q106 240 128 228 Q150 240 152 330Z"/><circle cx="172" cy="200" r="15"/><path d="M150 330 Q150 236 172 222 Q196 236 200 330 Q175 345 150 330Z" fill="#7a6f5e"/></g></svg><small>Your engagement photo here</small></div>
+  <div class="tl rv">
+   <div><small>2019</small><b data-en="First hello" data-es="El primer hola">First hello</b><p data-en="A rainy afternoon, one umbrella and a very long conversation." data-es="Una tarde de lluvia, un paraguas y una conversación muy larga.">A rainy afternoon, one umbrella and a very long conversation.</p></div>
+   <div><small>2022</small><b data-en="Our first trip" data-es="Nuestro primer viaje">Our first trip</b><p data-en="The Galápagos, sunburn and the decision to never travel apart." data-es="Galápagos, quemaduras de sol y la decisión de no viajar nunca separados.">The Galápagos, sunburn and the decision to never travel apart.</p></div>
+   <div><small>2026</small><b data-en="She said yes" data-es="Dijo que sí">She said yes</b><p data-en="At sunset in the old town, in front of both families." data-es="Al atardecer en el centro histórico, frente a ambas familias.">At sunset in the old town, in front of both families.</p></div>
+  </div>
+ </div>
+</div></section>
+
+<section class="sch"><div class="wrap">
+ <div class="orn rv">✦</div><h2 class="rv" data-en="The <i>celebration</i>" data-es="La <i>celebración</i>">The <i>celebration</i></h2>
+ <p class="sub rv" data-en="Saturday, the twelfth of June, two thousand twenty-seven" data-es="Sábado, doce de junio de dos mil veintisiete">Saturday, the twelfth of June, two thousand twenty-seven</p>
+ <div class="events">
+  <div class="ev rv"><svg viewBox="0 0 48 48"><path d="M24 4v8M20 8h8M10 44V24l14-10 14 10v20M18 44V32h12v12"/></svg><h3 data-en="Ceremony" data-es="Ceremonia">Ceremony</h3><div class="t">4:00 PM</div><p>Iglesia de San Sebastián (placeholder)</p><a href="#top" data-en="View map" data-es="Ver mapa">View map</a></div>
+  <div class="ev rv"><svg viewBox="0 0 48 48"><path d="M16 6h16l-2 14a6 6 0 0 1-12 0zM24 26v14M16 42h16"/></svg><h3 data-en="Cocktail" data-es="Cóctel">Cocktail</h3><div class="t">5:30 PM</div><p data-en="Garden terrace, live strings" data-es="Terraza del jardín, cuerdas en vivo">Garden terrace, live strings</p><a href="#top" data-en="View map" data-es="Ver mapa">View map</a></div>
+  <div class="ev rv"><svg viewBox="0 0 48 48"><path d="M8 40h32M12 40V22h24v18M18 22v-6h12v6M24 16V8"/><circle cx="24" cy="6" r="2"/></svg><h3 data-en="Reception" data-es="Recepción">Reception</h3><div class="t">7:00 PM</div><p>Hacienda Los Olivos (placeholder)</p><a href="#top" data-en="View map" data-es="Ver mapa">View map</a></div>
+ </div>
+ <div class="cal rv"><button class="btn o" id="ics" data-en="＋ Add to calendar" data-es="＋ Añadir al calendario">＋ Add to calendar</button></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="orn rv">✦</div><h2 class="rv" data-en="Dress <i>code</i>" data-es="Código de <i>vestimenta</i>">Dress <i>code</i></h2>
+ <div class="dress">
+  <div class="rv"><h3 data-en="Formal · Garden elegant" data-es="Formal · Elegante de jardín">Formal · Garden elegant</h3><p style="color:var(--mut)" data-en="Long dresses or cocktail attire; suits in light or neutral tones. We kindly ask guests to avoid white." data-es="Vestidos largos o de cóctel; trajes en tonos claros o neutros. Les pedimos amablemente evitar el blanco.">Long dresses or cocktail attire; suits in light or neutral tones. We kindly ask guests to avoid white.</p>
+   <div class="sw"><i style="background:#c9b48f"></i><i style="background:#8a9a7b"></i><i style="background:#d9c3b0"></i><i style="background:#7c8a9a"></i><i style="background:#a9806b"></i></div>
+   <p class="note" data-en="Suggested palette · the ceremony is on grass, so block heels are recommended." data-es="Paleta sugerida · la ceremonia es sobre césped, se recomiendan tacones anchos.">Suggested palette · the ceremony is on grass, so block heels are recommended.</p></div>
+  <div class="attire rv"><svg viewBox="0 0 120 220" fill="none" stroke="#b08d57" stroke-width="1.3"><circle cx="60" cy="24" r="14"/><path d="M48 42 L42 80 L20 210 H100 L78 80 L72 42 Z" fill="#8a9a7b22"/><path d="M42 80 H78"/></svg><svg viewBox="0 0 120 220" fill="none" stroke="#b08d57" stroke-width="1.3"><circle cx="60" cy="24" r="14"/><path d="M38 44 H82 L86 120 H34 Z" fill="#c9b48f22"/><path d="M60 44 V100 M52 44 L60 64 L68 44"/><path d="M40 120 L42 210 H58 L60 130 L62 210 H78 L80 120"/></svg></div>
+ </div>
+</div></section>
+
+<section class="sch" style="padding-bottom:70px"><div class="wrap"><div class="orn rv">✦</div><h2 class="rv" data-en="Moments" data-es="Momentos">Moments</h2></div>
+ <div class="gal" id="gal"></div><p class="hint" data-en="← swipe →" data-es="← desliza →">← swipe →</p>
+</section>
+
+<section class="rsvp" id="rsvp"><div class="wrap">
+ <div class="orn rv" style="color:var(--gold2)">✦</div><h2 class="rv">R.S.V.P.</h2>
+ <p class="sub rv" data-en="Kindly reply by the 1st of May, 2027" data-es="Por favor confirma antes del 1 de mayo de 2027">Kindly reply by the 1st of May, 2027</p>
+ <form id="f" class="rv">
+  <label class="f"><span data-en="Full name" data-es="Nombre completo">Full name</span><input required></label>
+  <div class="f att"><input type="radio" name="a" id="y" checked><label for="y" data-en="Joyfully accepts" data-es="Con alegría asistiré">Joyfully accepts</label><input type="radio" name="a" id="n"><label for="n" data-en="Regretfully declines" data-es="Lamentablemente no podré">Regretfully declines</label></div>
+  <label><span data-en="Email" data-es="Correo">Email</span><input type="email" required></label>
+  <label><span data-en="Number of guests" data-es="Número de invitados">Number of guests</span><select><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+  <label class="f"><span data-en="Dietary notes" data-es="Restricciones alimentarias">Dietary notes</span><input placeholder="—"></label>
+  <label class="f"><span data-en="A message for the couple" data-es="Un mensaje para los novios">A message for the couple</span><textarea rows="3"></textarea></label>
+  <button class="btn f" data-en="Send RSVP" data-es="Enviar confirmación">Send RSVP</button>
+  <div class="thanks" id="ty"><div class="script">Gracias</div><p data-en="Your reply has been received. (Demo: on the real page it lands in your Google Sheet and your inbox.)" data-es="Hemos recibido tu respuesta. (Demo: en la página real llega a tu Google Sheet y a tu correo.)">Your reply has been received. (Demo: on the real page it lands in your Google Sheet and your inbox.)</p></div>
+ </form>
+ <p class="dl" data-en="Pure HTML / CSS / JS · no website builder · delivered as a ZIP" data-es="HTML / CSS / JS puro · sin constructor de sitios · entregado en ZIP">Pure HTML / CSS / JS · no website builder · delivered as a ZIP</p>
+</div></section>
+<footer><div class="script">V &amp; M</div><p>12 · 06 · 2027</p></footer>
+<button class="music" id="mu" aria-label="Music">♪</button>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lenis=null;if(window.Lenis&&!reduce){lenis=new Lenis({lerp:.09});lenis.stop();const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}
+const skip=/[?&]open/.test(location.search)||navigator.webdriver;
+function openInv(){$('#env').classList.add('open');setTimeout(()=>{$('#intro').classList.add('gone');document.body.classList.remove('lock');lenis&&lenis.start();heroIn()},skip?0:1700)}
+$('#env').onclick=openInv;$('.tap').onclick=openInv;
+function heroIn(){if(window.gsap&&!reduce)gsap.from('.hx',{y:30,opacity:0,stagger:.15,duration:1.2,ease:'power3.out'})}
+if(skip){$('#env').classList.add('open');$('#intro').classList.add('gone');document.body.classList.remove('lock');lenis&&lenis.start()}
+// countdown
+const T=new Date('2027-06-12T16:00:00-05:00');const pad=n=>String(n).padStart(2,'0');
+function tick(){let d=Math.max(0,T-new Date());$('#dd').textContent=Math.floor(d/864e5);$('#hh').textContent=pad(Math.floor(d/36e5)%24);$('#mm').textContent=pad(Math.floor(d/6e4)%60);$('#ss').textContent=pad(Math.floor(d/1e3)%60)}tick();setInterval(tick,1000);
+// gallery
+const G=[['linear-gradient(160deg,#e9dcc6,#b9a07a)','Cuenca'],['linear-gradient(200deg,#d6dccb,#8a9a7b)','2019'],['linear-gradient(180deg,#f0e1d2,#c79f8a)','Galápagos'],['linear-gradient(140deg,#dfe3e8,#9aa6b2)','Quito'],['linear-gradient(170deg,#efe6d6,#c9b48f)','Te amo'],['linear-gradient(190deg,#e3d6cf,#a9806b)','Sí']];
+$('#gal').innerHTML=G.map(g=>`<div class="ph"><div style="background:${g[0]}"><svg viewBox="0 0 100 120" style="width:100%;height:100%"><circle cx="72" cy="30" r="12" fill="#fff" opacity=".45"/><path d="M0 90 Q30 70 55 86 T100 80 V120 H0Z" fill="#fff" opacity=".25"/><text x="50" y="112" text-anchor="middle" font-size="5" fill="#fff" opacity=".8" font-family="Jost" letter-spacing="1">PHOTO PLACEHOLDER</text></svg></div><span>${g[1]}</span></div>`).join('');
+// ics
+$('#ics').onclick=()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//demo//wedding//EN','BEGIN:VEVENT','UID:vm-2027@demo','DTSTAMP:20261017T000000Z','DTSTART:20270612T210000Z','DTEND:20270613T050000Z','SUMMARY:Valentina & Mateo – Wedding (demo)','LOCATION:Hacienda Los Olivos\\, Cuenca','END:VEVENT','END:VCALENDAR'].join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download='wedding.ics';a.click()};
+$('#f').onsubmit=e=>{e.preventDefault();[...e.target.children].forEach(c=>{if(c.id!=='ty')c.style.display='none'});$('#ty').style.display='block';burst()};
+// language
+$$('.lang button').forEach(b=>b.onclick=()=>{$$('.lang button').forEach(x=>x.classList.toggle('on',x===b));const l=b.dataset.l;document.documentElement.lang=l;$$('[data-'+l+']').forEach(el=>el.innerHTML=el.dataset[l])});
+// petals
+const cv=$('#petals'),cx=cv.getContext('2d');let W,H,P=[];function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener('resize',rs);
+const mk=(x,y,b)=>({x:x??Math.random()*W,y:y??-20,r:4+Math.random()*5,vy:b?(-2-Math.random()*3):(.4+Math.random()*.8),vx:b?(Math.random()-.5)*6:(Math.random()-.5)*.6,a:Math.random()*6,va:(Math.random()-.5)*.04,c:['#e8cfc0','#d4b98a','#efe3d3','#c9d1bd'][Math.floor(Math.random()*4)],b});
+for(let i=0;i<18;i++)P.push({...mk(),y:Math.random()*H});
+function burst(){for(let i=0;i<60;i++)P.push(mk(W/2,H*.6,true))}
+function loop(){cx.clearRect(0,0,W,H);P.forEach(p=>{if(p.b)p.vy+=.06;p.y+=p.vy;p.x+=p.vx+Math.sin(p.a)*.4;p.a+=p.va;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.fillStyle=p.c;cx.globalAlpha=.75;cx.beginPath();cx.ellipse(0,0,p.r,p.r*.6,0,0,7);cx.fill();cx.restore()});P=P.filter(p=>p.y<H+30);while(P.filter(p=>!p.b).length<18)P.push(mk());if(!reduce)requestAnimationFrame(loop)}loop();
+$('#mu').onclick=function(){this.textContent=this.textContent==='♪'?'❚❚':'♪'};
+if(window.gsap&&!reduce){gsap.registerPlugin(ScrollTrigger);if(lenis)lenis.on('scroll',ScrollTrigger.update);
+ $$('.rv').forEach(el=>gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}}));
+ gsap.to('.fl.a',{y:120,rotate:8,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+ gsap.to('.fl.b',{y:-80,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+}else $$('.rv').forEach(e=>{e.style.opacity=1;e.style.transform='none'});
+</script>
+</body>
+</html>
